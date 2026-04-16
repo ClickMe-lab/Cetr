@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Norlyy | Official</title>
     <style>
-        /* ОСНОВА ИЗ САМОГО ПЕРВОГО ДИЗАЙНА */
+        /* СТИЛЬ ИЗ САМОЙ ПЕРВОЙ ВЕРСИИ */
         body {
             margin: 0;
             padding: 0;
@@ -15,7 +15,6 @@
             overflow-x: hidden;
         }
 
-        /* Тот самый чистый фон с легким градиентом */
         .bg-setup {
             position: fixed;
             top: 0;
@@ -36,7 +35,6 @@
             z-index: 1;
         }
 
-        /* Чистая шапка */
         header {
             display: flex;
             justify-content: space-between;
@@ -58,6 +56,7 @@
             font-weight: bold;
             color: #50C878;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         nav a {
@@ -72,7 +71,6 @@
 
         nav a:hover { color: #50C878; }
 
-        /* Система страниц */
         .page {
             display: none;
             min-height: 100vh;
@@ -87,10 +85,10 @@
 
         .active { display: flex; }
 
-        h1 { font-size: 70px; margin: 0; font-weight: 800; }
+        h1 { font-size: 70px; margin: 0; font-weight: 800; text-transform: uppercase; }
         .subtitle { font-size: 18px; color: #666; margin: 15px 0 40px; max-width: 600px; }
 
-        /* Кнопка из первой версии */
+        /* КНОПКИ */
         .btn {
             padding: 15px 45px;
             background: #50C878;
@@ -102,32 +100,33 @@
             cursor: pointer;
             transition: 0.3s;
             text-transform: uppercase;
-            box-shadow: 0 5px 15px rgba(80, 200, 120, 0.2);
+            display: inline-block;
         }
 
         .btn:hover {
             background: #fff;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
         }
 
         .btn-back {
             background: transparent;
             color: #444;
             margin-top: 20px;
-            box-shadow: none;
             font-size: 12px;
+            border: none;
+            cursor: pointer;
         }
 
-        .btn-back:hover { color: #50C878; background: transparent; }
+        .btn-back:hover { color: #50C878; }
 
-        /* Сетка проектов */
-        .grid {
+        /* СЕТКА ЗАГРУЗОК */
+        .download-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             width: 100%;
-            max-width: 900px;
+            max-width: 1100px;
+            align-items: center;
         }
 
         .card {
@@ -141,19 +140,32 @@
 
         .card:hover { border-color: #50C878; transform: translateY(-5px); }
 
-        .author-link {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            font-size: 10px;
-            color: #222;
-            background: none;
-            border: none;
-            cursor: pointer;
+        .version-box {
+            background: rgba(20, 20, 20, 0.5);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #1a1a1a;
+        }
+
+        .btn-ver {
+            padding: 10px 25px;
+            font-size: 13px;
         }
 
         .snowflake { position: absolute; background: white; border-radius: 50%; pointer-events: none; }
+        
+        /* Футер "Об авторе" из первой версии */
+        .author-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #222;
+            font-size: 10px;
+            cursor: pointer;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -176,22 +188,36 @@
 </div>
 
 <div id="download-page" class="page">
-    <h1 style="color: #50C878;">ЗАГРУЗКА</h1>
-    <p class="subtitle">Все файлы доступны по прямой ссылке на облако:</p>
+    <h1 style="color: #50C878; margin-bottom: 50px;">ЗАГРУЗКА</h1>
     
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-        <a href="https://mega.nz/fm/aixlDQzR" target="_blank" class="btn">ПЕРЕЙТИ К ФАЙЛУ</a>
+    <div class="download-grid">
+        <div class="card" onclick="viewProject('Kitty Clicker', '#')">
+            <h3 style="color: #50C878;">Kitty Clicker</h3>
+            <p style="color: #555;">Игра на Python (.exe)</p>
+        </div>
         
-        <div style="display: flex; gap: 10px;">
-            <button class="btn btn-back" style="margin-top:0;" onclick="showPage('projects-list')">ДРУГИЕ ПРОЕКТЫ</button>
-            <button class="btn btn-back" style="margin-top:0;" onclick="showPage('home')">НА ГЛАВНУЮ</button>
+        <div class="version-box">
+            <h2 style="margin-top: 0; letter-spacing: 5px; font-size: 20px;">ФРЕДДИ</h2>
+            <p style="color: #555; font-size: 13px; margin-bottom: 20px;">Выберите версию проекта для загрузки:</p>
+            <div style="display: flex; justify-content: center; gap: 10px;">
+                <a href="https://mega.nz/fm/aixlDQzR" target="_blank" class="btn btn-ver">СТАРЫЙ</a>
+                <a href="https://mega.nz/fm/azZlWDxY" target="_blank" class="btn btn-ver">НОВЫЙ</a>
+            </div>
+        </div>
+        
+        <div class="card" onclick="viewProject('CPS Test', 'https://clickme-lab.github.io/cps_test/')">
+            <h3 style="color: #50C878;">CPS Test</h3>
+            <p style="color: #555;">Веб-тест скорости клика</p>
         </div>
     </div>
+
+    <button class="btn btn-back" style="margin-top: 50px;" onclick="showPage('home')">НАЗАД НА ГЛАВНУЮ</button>
 </div>
+
 <div id="projects-list" class="page">
     <h1>ПРОЕКТЫ</h1>
-    <div class="grid" style="margin-top: 40px;">
-        <div class="card" onclick="viewProject('Kitty Clicker', 'https://clickme-lab.github.io/kittyclicker/')">
+    <div class="download-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin-top: 40px;">
+        <div class="card" onclick="viewProject('Kitty Clicker', '#')">
             <h3 style="color: #50C878;">Kitty Clicker</h3>
             <p style="color: #555;">Игра на Python (.exe)</p>
         </div>
@@ -200,32 +226,34 @@
             <p style="color: #555;">Веб-тест скорости клика</p>
         </div>
     </div>
-    <button class="btn btn-back" onclick="showPage('home')">Вернуться</button>
+    <button class="btn btn-back" onclick="showPage('home')">ВЕРНУТЬСЯ</button>
 </div>
 
 <div id="project-view" class="page">
     <h1 id="pTitle" style="color: #50C878;">Название</h1>
-    <p class="subtitle">Используйте кнопку ниже для перехода на сайт проекта:</p>
+    <p class="subtitle">Нажмите на кнопку ниже, чтобы перейти к проекту:</p>
     <a id="pLink" href="#" target="_blank" class="btn">ПЕРЕЙТИ НА САЙТ</a>
-    <button class="btn btn-back" onclick="showPage('projects-list')">Назад к списку</button>
+    <button class="btn btn-back" onclick="showPage('download-page')">НАЗАД К ЗАГРУЗКАМ</button>
 </div>
 
-<button class="author-link">Об авторе</button>
+<button class="author-btn">Об авторе</button>
 
 <script>
+    // Навигация по страницам
     function showPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         window.scrollTo(0,0);
     }
 
+    // Открытие окна конкретного проекта
     function viewProject(name, link) {
         document.getElementById('pTitle').innerText = name;
         document.getElementById('pLink').href = link;
         showPage('project-view');
     }
 
-    // Автоскрытие шапки
+    // Скрытие шапки при скролле
     let lastScroll = 0;
     window.onscroll = () => {
         let current = window.pageYOffset;
@@ -235,7 +263,7 @@
         lastScroll = current;
     };
 
-    // Снежинки
+    // Анимация снега
     function createSnow() {
         const container = document.getElementById('snow-container');
         const flake = document.createElement('div');
