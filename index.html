@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Norlyy | Official</title>
     <style>
-        /* СТИЛЬ ИЗ САМОЙ ПЕРВОЙ ВЕРСИИ */
         body {
             margin: 0;
             padding: 0;
@@ -88,7 +87,6 @@
         h1 { font-size: 70px; margin: 0; font-weight: 800; text-transform: uppercase; }
         .subtitle { font-size: 18px; color: #666; margin: 15px 0 40px; max-width: 600px; }
 
-        /* КНОПКИ */
         .btn {
             padding: 15px 45px;
             background: #50C878;
@@ -119,7 +117,6 @@
 
         .btn-back:hover { color: #50C878; }
 
-        /* СЕТКА ЗАГРУЗОК */
         .download-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -154,7 +151,6 @@
 
         .snowflake { position: absolute; background: white; border-radius: 50%; pointer-events: none; }
         
-        /* Футер "Об авторе" из первой версии */
         .author-btn {
             position: fixed;
             bottom: 20px;
@@ -200,7 +196,7 @@
             <h2 style="margin-top: 0; letter-spacing: 5px; font-size: 20px;">ФРЕДДИ</h2>
             <p style="color: #555; font-size: 13px; margin-bottom: 20px;">Выберите версию проекта для загрузки:</p>
             <div style="display: flex; justify-content: center; gap: 10px;">
-                <a href="https://mega.nz/fm/aixlDQzR" target="_blank" class="btn btn-ver">СТАРЫЙ</a>
+                <a href="https://mega.nz/fm/b64zTCBB" target="_blank" class="btn btn-ver">СТАРЫЙ</a>
                 <a href="https://mega.nz/fm/azZlWDxY" target="_blank" class="btn btn-ver">НОВЫЙ</a>
             </div>
         </div>
@@ -239,21 +235,18 @@
 <button class="author-btn">Об авторе</button>
 
 <script>
-    // Навигация по страницам
     function showPage(id) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(id).classList.add('active');
         window.scrollTo(0,0);
     }
 
-    // Открытие окна конкретного проекта
     function viewProject(name, link) {
         document.getElementById('pTitle').innerText = name;
         document.getElementById('pLink').href = link;
         showPage('project-view');
     }
 
-    // Скрытие шапки при скролле
     let lastScroll = 0;
     window.onscroll = () => {
         let current = window.pageYOffset;
@@ -263,7 +256,6 @@
         lastScroll = current;
     };
 
-    // Анимация снега
     function createSnow() {
         const container = document.getElementById('snow-container');
         const flake = document.createElement('div');
