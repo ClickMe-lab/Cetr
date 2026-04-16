@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norlyy | Official</title>
+    <style>
+        /* ОСНОВА ИЗ САМОГО ПЕРВОГО ДИЗАЙНА */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Тот самый чистый фон с легким градиентом */
+        .bg-setup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #121212 0%, #0b0b0b 100%);
+            z-index: 0;
+        }
+
+        #snow-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Чистая шапка */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(11, 11, 11, 0.9);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        header.hidden { transform: translateY(-100%); }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #50C878;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #888;
+            margin-left: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        nav a:hover { color: #50C878; }
+
+        /* Система страниц */
+        .page {
+            display: none;
+            min-height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .active { display: flex; }
+
+        h1 { font-size: 70px; margin: 0; font-weight: 800; }
+        .subtitle { font-size: 18px; color: #666; margin: 15px 0 40px; max-width: 600px; }
+
+        /* Кнопка из первой версии */
+        .btn {
+            padding: 15px 45px;
+            background: #50C878;
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(80, 200, 120, 0.2);
+        }
+
+        .btn:hover {
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-back {
+            background: transparent;
+            color: #444;
+            margin-top: 20px;
+            box-shadow: none;
+            font-size: 12px;
+        }
+
+        .btn-back:hover { color: #50C878; background: transparent; }
+
+        /* Сетка проектов */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .card {
+            background: #111;
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid #1a1a1a;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .card:hover { border-color: #50C878; transform: translateY(-5px); }
+
+        .author-link {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            font-size: 10px;
+            color: #222;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .snowflake { position: absolute; background: white; border-radius: 50%; pointer-events: none; }
+    </style>
+</head>
+<body>
+
+<div class="bg-setup"></div>
+<div id="snow-container"></div>
+
+<header id="navbar">
+    <div class="logo">NORLYY</div>
+    <nav>
+        <a onclick="showPage('home')">Главная</a>
+        <a onclick="showPage('projects-list')">Проекты</a>
+    </nav>
+</header>
+
+<div id="home" class="page active">
+    <h1>Norlyy</h1>
+    <p class="subtitle">Я Норли создатель игр на пайтон посмотреть мои проэкты ты можешь ниже</p>
+    <button class="btn" onclick="showPage('download-page')">СКАЧАТЬ</button>
+</div>
+
+<div id="download-page" class="page">
+    <h1 style="color: #50C878;">ЗАГРУЗКА</h1>
+    <p class="subtitle">Все файлы доступны по прямой ссылке на облако:</p>
+    
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+        <a href="https://mega.nz/fm/aixlDQzR" target="_blank" class="btn">ПЕРЕЙТИ К ФАЙЛУ</a>
+        
+        <div style="display: flex; gap: 10px;">
+            <button class="btn btn-back" style="margin-top:0;" onclick="showPage('projects-list')">ДРУГИЕ ПРОЕКТЫ</button>
+            <button class="btn btn-back" style="margin-top:0;" onclick="showPage('home')">НА ГЛАВНУЮ</button>
+        </div>
+    </div>
+</div>
+<div id="projects-list" class="page">
+    <h1>ПРОЕКТЫ</h1>
+    <div class="grid" style="margin-top: 40px;">
+        <div class="card" onclick="viewProject('Flappy Blade', 'https://mega.nz/...')">
+            <h3 style="color: #50C878;">Flappy Blade</h3>
+            <p style="color: #555;">Игра на Python (.exe)</p>
+        </div>
+        <div class="card" onclick="viewProject('CPS Test', 'https://clickme-lab.github.io/cps_test/')">
+            <h3 style="color: #50C878;">CPS Test</h3>
+            <p style="color: #555;">Веб-тест скорости клика</p>
+        </div>
+    </div>
+    <button class="btn btn-back" onclick="showPage('home')">Вернуться</button>
+</div>
+
+<div id="project-view" class="page">
+    <h1 id="pTitle" style="color: #50C878;">Название</h1>
+    <p class="subtitle">Используйте кнопку ниже для перехода на сайт проекта:</p>
+    <a id="pLink" href="#" target="_blank" class="btn">ПЕРЕЙТИ НА САЙТ</a>
+    <button class="btn btn-back" onclick="showPage('projects-list')">Назад к списку</button>
+</div>
+
+<button class="author-link">Об авторе</button>
+
+<script>
+    function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo(0,0);
+    }
+
+    function viewProject(name, link) {
+        document.getElementById('pTitle').innerText = name;
+        document.getElementById('pLink').href = link;
+        showPage('project-view');
+    }
+
+    // Автоскрытие шапки
+    let lastScroll = 0;
+    window.onscroll = () => {
+        let current = window.pageYOffset;
+        let nav = document.getElementById('navbar');
+        if (current > lastScroll && current > 50) nav.classList.add('hidden');
+        else nav.classList.remove('hidden');
+        lastScroll = current;
+    };
+
+    // Снежинки
+    function createSnow() {
+        const container = document.getElementById('snow-container');
+        const flake = document.createElement('div');
+        flake.className = 'snowflake';
+        const size = Math.random() * 3 + 1 + 'px';
+        flake.style.width = size; flake.style.height = size;
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.top = '-10px';
+        flake.style.opacity = Math.random();
+        container.appendChild(flake);
+        flake.animate([{top: '-10px'}, {top: '105vh'}], {duration: Math.random() * 3000 + 4000}).onfinish = () => flake.remove();
+    }
+    setInterval(createSnow, 150);
+</script>
+
+</body>
+</html>
