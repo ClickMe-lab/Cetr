@@ -150,18 +150,6 @@
         }
 
         .snowflake { position: absolute; background: white; border-radius: 50%; pointer-events: none; }
-        
-        .author-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: #222;
-            font-size: 10px;
-            cursor: pointer;
-            z-index: 1000;
-        }
     </style>
 </head>
 <body>
@@ -187,7 +175,7 @@
     <h1 style="color: #50C878; margin-bottom: 50px;">ЗАГРУЗКА</h1>
     
     <div class="download-grid">
-        <div class="card" onclick="viewProject('Kitty Clicker', 'https://clickme-lab.github.io/kittyclicker/')">
+        <div class="card" onclick="viewProject('Kitty Clicker', '#')">
             <h3 style="color: #50C878;">Kitty Clicker</h3>
             <p style="color: #555;">Игра на Python (.exe)</p>
         </div>
@@ -196,8 +184,8 @@
             <h2 style="margin-top: 0; letter-spacing: 5px; font-size: 20px;">ФРЕДДИ</h2>
             <p style="color: #555; font-size: 13px; margin-bottom: 20px;">Выберите версию проекта для загрузки:</p>
             <div style="display: flex; justify-content: center; gap: 10px;">
-                <a href="https://mega.nz/fm/b64zTCBB" target="_blank" class="btn btn-ver">СТАРЫЙ</a>
-                <a href="https://mega.nz/fm/azZlWDxY" target="_blank" class="btn btn-ver">НОВЫЙ</a>
+                <a href="https://mega.nz/folder/mioCwRBT#M8Aj6J0qKfbZQwgOmf3oOA" target="_blank" class="btn btn-ver">СТАРЫЙ</a>
+                <a href="https://mega.nz/folder/HmYWiDCa#6Eaadg45JpACx-9qpjZJ0A" target="_blank" class="btn btn-ver">НОВЫЙ</a>
             </div>
         </div>
         
@@ -231,8 +219,6 @@
     <a id="pLink" href="#" target="_blank" class="btn">ПЕРЕЙТИ НА САЙТ</a>
     <button class="btn btn-back" onclick="showPage('download-page')">НАЗАД К ЗАГРУЗКАМ</button>
 </div>
-
-<button class="author-btn">Об авторе</button>
 
 <script>
     function showPage(id) {
